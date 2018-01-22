@@ -3,7 +3,7 @@ var Client = require('node-rest-client').Client
 var score = require('./score')
 var task = require('./task')
 
-var secret = require('../secret.json')
+var secret = require('./../secret.json')
 
 function call (site, input, callback) {
   var client = new Client()
