@@ -13,7 +13,8 @@ function call (method, input, callback) {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
-    }
+    },
+    json: true
   }
 
   request(options, function (err, response, body) {
