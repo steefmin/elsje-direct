@@ -31,8 +31,12 @@ function processV1Request (request, response) {
       sendResponse('test')
     },
     'score.get.my': () => {
-      api.getScore(input, site, function(data, res) {
-        let response = res.score
+      let input = {
+        userid: 'U02FYJ1PN'
+      }
+      console.log(requestSource)
+      api.getScore(input, function (score) {
+        let response = score
         if (requestSource === googleAssistantRequest) {
           sendGoogleResponse(response)
         } else {

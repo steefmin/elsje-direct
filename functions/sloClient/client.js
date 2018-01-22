@@ -13,14 +13,24 @@ function call (site, input, callback) {
     headers: { 'Content-Type': 'application/json' }
   }
 
-  client.post(site, args, callback)
+  client.post(site, args, function (data) {
+    callback(data)
+  })
 }
 
-var getScore = function (site, input, callback) {
-
+var getScore = function (input, callback) {
+  var send = {
+    token: secret.token,
+    tokenid: secret.tokenid
+  }
+  call(secret.client, send, function (data) {
+    var score = data.scores.filter(function (val) {
+      return val.userid === input.userid
+    })
+    callback(score.shift().score)
+  })
 }
 
 module.exports = {
-  getScore: 'getScore',
-  updateScore: ''
+  getScore: getScore
 }
