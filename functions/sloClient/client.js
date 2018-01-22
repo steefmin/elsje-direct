@@ -1,4 +1,4 @@
-var request = require('client-request')
+var request = require('request')
 
 var score = require('./score')
 // var task = require('./task')
@@ -8,7 +8,8 @@ var secret = require('./../secret.json')
 function call (method, input, callback) {
   var options = {
     uri: secret.site + method,
-    body: input,
+    body: JSON.stringify(input),
+    family: 4,
     method: 'POST',
     headers: {
       'content-type': 'application/json'
