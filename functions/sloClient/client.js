@@ -13,8 +13,12 @@ function call (site, input, callback) {
     headers: { 'Content-Type': 'application/json' }
   }
 
-  client.post(site, args, function (data) {
+  var req = client.post(site, args, function (data) {
     callback(data)
+  })
+
+  req.on('error', function (err) {
+    console.log('request error', err)
   })
 }
 
