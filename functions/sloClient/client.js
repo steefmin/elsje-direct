@@ -1,7 +1,7 @@
 var Client = require('node-rest-client').Client
 
 var score = require('./score')
-var task = require('./task')
+// var task = require('./task')
 
 var secret = require('./../secret.json')
 
