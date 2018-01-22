@@ -5,7 +5,7 @@ var score = require('./score')
 
 var secret = require('./../secret.json')
 
-function call (site, input, callback) {
+function call (method, input, callback) {
   var client = new Client()
 
   var args = {
@@ -13,7 +13,7 @@ function call (site, input, callback) {
     headers: { 'Content-Type': 'application/json' }
   }
 
-  var req = client.post(site, args, function (data) {
+  var req = client.post(secret.site + method, args, function (data) {
     callback(data)
   })
 
@@ -27,8 +27,7 @@ var getScore = function (input, callback) {
     token: secret.token,
     tokenid: secret.tokenid
   }
-  var api = secret.site + 'score.get'
-  call(api, send, function (data) {
+  call('score.get', send, function (data) {
     var score = data.scores.filter(function (val) {
       return val.userid === input.userid
     })
