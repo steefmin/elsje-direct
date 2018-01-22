@@ -3,7 +3,7 @@
 const functions = require('firebase-functions') // Cloud Functions for Firebase library
 const DialogflowApp = require('actions-on-google').DialogflowApp // Google Assistant helper library
 
-let api = require('./taskapi')
+let api = require('sloClient/client')
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers))
