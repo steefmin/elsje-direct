@@ -1,4 +1,4 @@
-var Client = require('node-rest-client').Client
+var request = require('client-request')
 
 var score = require('./score')
 // var task = require('./task')
@@ -6,19 +6,22 @@ var score = require('./score')
 var secret = require('./../secret.json')
 
 function call (method, input, callback) {
-  var client = new Client()
-
-  var args = {
-    data: input,
-    headers: { 'Content-Type': 'application/json' }
+  var options = {
+    uri: secret.site + method,
+    body: input,
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    }
   }
 
-  var req = client.post(secret.site + method, args, function (data) {
-    callback(data)
-  })
-
-  req.on('error', function (err) {
-    console.log('request error', err)
+  request(options, function (err, response, body) {
+    if (err) {
+      console.log('request error', err)
+    } else {
+      var data = JSON.parse(body)
+      callback(data)
+    }
   })
 }
 
