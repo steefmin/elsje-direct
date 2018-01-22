@@ -1,0 +1,6 @@
+#!/bin/bash
+git pull
+cd functions
+npm install
+cd ..
+firebase deploy --only functions --project elsje-direct
