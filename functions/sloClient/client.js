@@ -23,7 +23,8 @@ var getScore = function (input, callback) {
     token: secret.token,
     tokenid: secret.tokenid
   }
-  call(secret.client, send, function (data) {
+  var api = secret.site + 'score.get'
+  call(api, send, function (data) {
     var score = data.scores.filter(function (val) {
       return val.userid === input.userid
     })
