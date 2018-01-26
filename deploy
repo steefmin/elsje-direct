@@ -3,4 +3,4 @@ git pull
 cd functions
 npm install
 cd ..
-firebase deploy --only functions --project elsje-direct
+gcloud beta functions deploy elsje-direct --trigger-http

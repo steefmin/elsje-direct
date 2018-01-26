@@ -8,8 +8,7 @@ var secret = require('./../secret.json')
 function call (method, input, callback) {
   var options = {
     uri: secret.site + method,
-    body: JSON.stringify(input),
-    family: 4,
+    body: input,
     method: 'POST',
     headers: {
       'content-type': 'application/json'
