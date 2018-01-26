@@ -1,6 +1,4 @@
 #!/bin/bash
 git pull
-cd functions
 npm install
-cd ..
 gcloud beta functions deploy elsje-direct --trigger-http
