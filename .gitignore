@@ -1,3 +1,4 @@
 node_modules/
 functions/secret.json
 functions/package-lock.json
+.gcloudignore
