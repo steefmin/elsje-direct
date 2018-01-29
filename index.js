@@ -5,20 +5,20 @@ const DialogflowApp = require('actions-on-google').DialogflowApp // Google Assis
 
 let api = require('./sloClient/client')
 
-exports.dialogflowFulfillment = functions.https.onRequest((request, response) => {
+exports.dialogflowFulfillment = function(request, response) {
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers))
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body))
   if (request.body.result) {
-    processV1Request(request, response)
+    processRequest(request, response)
   } else {
     console.log('Invalid Request')
     return response.status(400).end('Invalid Webhook Request (expecting v1 or v2 webhook request)')
   }
-})
+}
 /*
 * Function to handle v1 webhook requests from Dialogflow
 */
-function processV1Request (request, response) {
+function processRequest (request, response) {
   let action = request.body.result.action // https://dialogflow.com/docs/actions-and-parameters
   let parameters = request.body.result.parameters // https://dialogflow.com/docs/actions-and-parameters
   let inputContexts = request.body.result.contexts // https://dialogflow.com/docs/contexts
