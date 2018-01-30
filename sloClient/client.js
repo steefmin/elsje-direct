@@ -3,7 +3,7 @@ var request = require('request')
 var score = require('./score')
 // var task = require('./task')
 
-var secret = require('./../secret.json')
+var secret = require('./../secret')
 
 function call (method, input, callback) {
   var options = {
